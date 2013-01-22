@@ -1,0 +1,9 @@
+A Calc Add-In example in C++
+
+The add-in provides functions like EXPO and GETMYFIRSTVALUE (see
+CalcAddinCpp_impl.cxx for details).  In an SDK environment, a plain "make"
+builds the CalcAddinCpp.oxt extension, and "make install" registers the
+extension in the LibreOffice installation.
+
+This example should work at least on Linux (it makes some hard-coded assumptions
+instead of using the more generic mechanisms provided by the SDK).
