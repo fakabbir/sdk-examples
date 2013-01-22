@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://openoffice.org/2010/uno-components">
+  <component loader="com.sun.star.loader.SharedLibrary" uri="libCalcAddinCpp.so">
+    <implementation name="org.openoffice.sheet.addin.CalcAddinCpp_impl.CalcAddinCpp">
+      <service name="org.openoffice.sheet.addin.CalcAddinCpp"/>
+      <service name="com.sun.star.sheet.AddIn"/>
+    </implementation>
+  </component>
+</components>

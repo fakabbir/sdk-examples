@@ -1,0 +1,32 @@
+/*	Serhat Sevki Dincer, jfcgaussATgmail, 11apr2006
+	Random Number Generator Add-In for OpenOffice.org Calc
+
+	This program can be used, modified and/or (re)distributed under
+	the terms of LGPL. See www.gnu.org for info about LGPL.
+
+	This program has NO warranty.
+	OpenOffice.org SDK has been used while writing this program.
+*/
+
+#ifndef _org_openoffice_sheet_addin_CalcAddinCpp_idl_
+#define _org_openoffice_sheet_addin_CalcAddinCpp_idl_
+
+#include <com/sun/star/uno/XInterface.idl>
+
+module org { module openoffice { module sheet { module addin {
+
+	interface XCalcAddinCpp : com::sun::star::uno::XInterface
+	{
+	  double expo( [in] double m );
+	  long   getMyFirstValue( );
+  	  string methodOne( [in] string val );
+	  string methodTwo( [in] string val );
+	  long methodThree( [in] sequence< sequence< long > > aValList );
+	  sequence< sequence< long > > methodFour( [in] sequence< sequence< long > > aValList );
+	};
+
+	service CalcAddinCpp : XCalcAddinCpp;
+
+}; }; }; };
+
+#endif
