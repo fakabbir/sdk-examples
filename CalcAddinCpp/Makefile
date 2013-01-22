@@ -8,7 +8,17 @@ CalcAddinCpp.rdb: CalcAddinCpp.urd
 
 CalcAddinCpp_impl.o: CalcAddinCpp.rdb
 	$(OO_SDK_HOME)/bin/cppumaker -BUCR -Torg.openoffice.sheet.addin.XCalcAddinCpp \
+		-Tcom.sun.star.beans.XPropertySet \
+		-Tcom.sun.star.container.XIndexAccess \
+		-Tcom.sun.star.frame.XComponentLoader \
 		-Tcom.sun.star.sheet.XAddIn \
+		-Tcom.sun.star.sheet.XSpreadsheet \
+		-Tcom.sun.star.sheet.XSpreadsheetDocument \
+		-Tcom.sun.star.style.XStyleFamiliesSupplier \
+		-Tcom.sun.star.table.CellRangeAddress \
+		-Tcom.sun.star.table.XTableChart \
+		-Tcom.sun.star.table.XTableCharts \
+		-Tcom.sun.star.table.XTableChartsSupplier \
 		-Tcom.sun.star.lang.XServiceName \
 		-Tcom.sun.star.lang.XServiceInfo \
 		-Tcom.sun.star.lang.XTypeProvider \
@@ -19,6 +29,7 @@ CalcAddinCpp_impl.o: CalcAddinCpp.rdb
 		-Tcom.sun.star.lang.XSingleComponentFactory \
 		-Tcom.sun.star.lang.XSingleServiceFactory \
 		-Tcom.sun.star.registry.XRegistryKey \
+		-Tcom.sun.star.registry.XSimpleRegistry \
 		$(OFFICE_PROGRAM_PATH)/types/offapi.rdb \
 		$(OO_SDK_URE_HOME)/share/misc/types.rdb \
 		CalcAddinCpp.rdb
