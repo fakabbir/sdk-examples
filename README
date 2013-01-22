@@ -1,0 +1,9 @@
+This repository contains additional examples for the LibreOffice SDK.
+
+Each subdirectory should contain one working example.  The name of the
+subdirectory should be chosen so that it informs the user about the purpose and
+programming language of the example.  Each subdirectory should contain a README
+file giving further information how to build and test the given example.
+
+See <http://api.libreoffice.org/> for further documentation for the LibreOffice
+SDK.
