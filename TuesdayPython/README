@@ -1,0 +1,66 @@
+=============================
+LibreOffice prints on Tuesday
+=============================
+
+This is a simple sample extension for LibreOffice written in Python.  It is
+self contained in that it contains the full source to build itself. To do so,
+unpack the oxt-extension with any program able to read the zip format. Running
+the script './build' in the unpacked source tree, will then recreate the
+extension (and possible modifications).
+
+Following below is a description of all the files in this extension and how
+LibreOffice learns what to do with them.
+
+For licensing information see the file ./description/license.txt
+
+
+Extension entry points
+======================
+
+These files are the entry point LibreOffice uses to find out what to discover
+the content of the extension:
+- ./description.xml
+  This file (and those that it references) describes the extension, its license
+  in a human readable form.
+- ./META-INF/manifest.xml
+  This file explains the contents of the extension for LibreOffice to inject.
+
+
+Files referenced from description.xml
+=====================================
+- ./description/license.txt
+  License shown to the user on installation.
+- ./description/description_en.txt
+  Human readable description to show e.g. in the extension manager.
+- ./description/extensionicon_42.png
+  Icon to show e.g. in the extension manager
+
+
+Files referenced from manifest.xml
+==================================
+- ./Addons.xcu
+  Describes how this extension wants to modify the menus and toolbars.
+  It replaces the print commands with a call to the new service
+  org.libreoffice.TuesdayPrinter.
+- ./TuesdayPrinter.py
+  Python script that implements a service called org.libreoffice.TuesdayPrinter
+
+
+Files referenced from Addons.xcu
+================================
+- ./images/printtuesday_26.bmp
+  Image to be used as an icon for the new toolbar button
+  NOTE: Although this file ends with .bmp for historic reasons, its a png file.
+- ./images/printtuesday_16.bmp
+  Image to be used as an icon for the new menu entry
+  NOTE: Although this file ends with .bmp for historic reasons, its a png file.
+
+
+Files not referenced anywhere and ignored at runtime
+====================================================
+- ./build
+  A simple python script that packs the extension from the unpacked source.
+- ./extensionname.txt
+  A file hinting ./build how to name the produced .oxt file.
+- ./README
+  This file.
