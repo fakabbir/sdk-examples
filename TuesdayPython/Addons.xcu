@@ -40,7 +40,7 @@
                                     service is implemented in TuesdayPrinter.py
                                     see http://opengrok.libreoffice.org/search?q=ServiceHandler%3A%3Aimplts_dispatch&project=core for the gory details
                                 -->
-                                <value>service:org.libreoffice.TuesdayPrinter</value>
+                                <value>service:org.libreoffice.TuesdayPrinter?printontuesday</value>
                             </prop>
                             <prop oor:name="ImageIdentifier" oor:type="xs:string">
                                 <value>%origin%/images/printtuesday</value>
@@ -90,7 +90,7 @@
                     <node oor:name="ToolBarItems">
                         <node oor:name="button1" oor:op="replace">
                             <prop oor:name="URL" oor:type="xs:string">
-                                <value>service:org.libreoffice.TuesdayPrinter</value>
+                                <value>service:org.libreoffice.TuesdayPrinter?printontuesday</value>
                             </prop>
                             <prop oor:name="ImageIdentifier" oor:type="xs:string">
                                 <value>%origin%/images/printtuesday</value>
@@ -123,7 +123,7 @@
                     <node oor:name="ToolBarItems">
                         <node oor:name="button1" oor:op="replace">
                             <prop oor:name="URL" oor:type="xs:string">
-                                <value>service:org.libreoffice.TuesdayPrinter</value>
+                                <value>service:org.libreoffice.TuesdayPrinter?printontuesday</value>
                             </prop>
                             <prop oor:name="ImageIdentifier" oor:type="xs:string">
                                 <value>%origin%/images/printtuesday</value>

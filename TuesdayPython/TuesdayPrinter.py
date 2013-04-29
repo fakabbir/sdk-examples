@@ -21,25 +21,26 @@ class TuesdayPrinter(unohelper.Base, XJobExecutor, XEventListener):
     as a URL.
     """
     def trigger(self, args):
-        frame = self.desktop.ActiveFrame
-        if datetime.date.today().weekday() == 1:
-            # its Tuesday, we really call print now using the '.uno:Print' url
-            # that was removed from the menus and toolbars
-            # see http://wiki.openoffice.org/wiki/Documentation/DevGuide/OfficeDev/Using_the_Dispatch_Framework for all the details
-            self.dispatchhelper.executeDispatch(
-                frame,
-                ".uno:Print",
-                "_self",
-                0, ())
-        else:
-            window = frame.ContainerWindow
-            window.Toolkit.createMessageBox(
-                window,
-                uno.createUnoStruct("com.sun.star.awt.Rectangle"),
-                "warningbox",
-                uno.getConstantByName("com.sun.star.awt.MessageBoxButtons.BUTTONS_OK"),
-                "Im sorry, Dave.",
-                "Im afraid I cant do that. It is not Tuesday.").execute()
+        if args == "printontuesday":
+            frame = self.desktop.ActiveFrame
+            if datetime.date.today().weekday() == 1:
+                # its Tuesday, we really call print now using the '.uno:Print' url
+                # that was removed from the menus and toolbars
+                # see http://wiki.openoffice.org/wiki/Documentation/DevGuide/OfficeDev/Using_the_Dispatch_Framework for all the details
+                self.dispatchhelper.executeDispatch(
+                    frame,
+                    ".uno:Print",
+                    "_self",
+                    0, ())
+            else:
+                window = frame.ContainerWindow
+                window.Toolkit.createMessageBox(
+                    window,
+                    uno.createUnoStruct("com.sun.star.awt.Rectangle"),
+                    "warningbox",
+                    uno.getConstantByName("com.sun.star.awt.MessageBoxButtons.BUTTONS_OK"),
+                    "Im sorry, Dave.",
+                    "Im afraid I cant do that. It is not Tuesday.").execute()
     # boilerplate code below this point
     def __init__(self, context):
         self.context = context
