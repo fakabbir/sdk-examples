@@ -44,14 +44,14 @@ class TuesdayPrinter(unohelper.Base, XJobExecutor, XEventListener):
     # boilerplate code below this point
     def __init__(self, context):
         self.context = context
-        # see http://api.libreoffice.org/docs/common/ref/com/sun/star/frame/Desktop.html
+        # see http://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1frame_1_1Desktop.html
         self.desktop = self.createUnoService("com.sun.star.frame.Desktop")
-        # see http://api.libreoffice.org/docs/common/ref/com/sun/star/frame/DispatchHelper.html
+        # see http://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1frame_1_1DispatchHelper.html
         self.dispatchhelper = self.createUnoService("com.sun.star.frame.DispatchHelper")
     def createUnoService(self, name):
         """little helper function to create services in our context"""
-        # see http://api.libreoffice.org/docs/common/ref/com/sun/star/lang/ServiceManager.html
-        # see http://api.libreoffice.org/docs/common/ref/com/sun/star/lang/XMultiComponentFactory.html#createInstanceWithContext
+        # see http://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1lang_1_1ServiceManager.html
+        # see http://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1lang_1_1XMultiComponentFactory.html#a77f975d2f28df6d1e136819f78a57353
         return self.context.ServiceManager.createInstanceWithContext(name, self.context)
     def disposing(self, args):
         pass
