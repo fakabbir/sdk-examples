@@ -1,0 +1,13 @@
+An UNO Example in Python.
+
+This example shows how to connect to LibreOffice and how to use the Spell Checker.
+
+To get this working you must have:
+
+   The grammar/spell packages. You can download the pt-BR at http://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/ and the en-US is installed by default.
+
+   You must use the Python version inside LibreOffice installation or
+   you need to have the libreoffice-pyuno installed in your Python version.
+   Use Python 3.3. This is the LibreOffice Python version.
+
+This code will run on Linux or Windows. Maybe at Windows you will need to change the LIBREOFFICE location or add the Program folder at Windows PATH.
