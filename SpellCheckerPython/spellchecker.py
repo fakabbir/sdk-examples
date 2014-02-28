@@ -43,7 +43,7 @@ class SpellChecker:
 
 		# Create an instance of Spell Checker.
 		# See http://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1linguistic2_1_1SpellChecker.html
-		self.spellchecker = smgr.createInstanceWithContext("com.sun.star.linguistic2.SpellChecker", local_ctx)
+		self.spellchecker = smgr.createInstanceWithContext("com.sun.star.linguistic2.SpellChecker", ctx)
 
 	def get_context(self, resolver):
 		'''
