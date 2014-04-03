@@ -36,8 +36,7 @@ class TuesdayPrinter(unohelper.Base, XJobExecutor, XEventListener):
                 window = frame.ContainerWindow
                 window.Toolkit.createMessageBox(
                     window,
-                    uno.createUnoStruct("com.sun.star.awt.Rectangle"),
-                    "warningbox",
+                    uno.Enum('com.sun.star.awt.MessageBoxType', 'WARNINGBOX'),
                     uno.getConstantByName("com.sun.star.awt.MessageBoxButtons.BUTTONS_OK"),
                     "Im sorry, Dave.",
                     "Im afraid I cant do that. It is not Tuesday.").execute()

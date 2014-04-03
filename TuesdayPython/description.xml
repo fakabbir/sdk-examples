@@ -11,8 +11,8 @@
     <extension-description>
         <src xlink:href="description/description_en.txt"/>
     </extension-description>
-    <dependencies>
-        <OpenOffice.org-minimal-version xmlns:d="http://openoffice.org/extensions/description/2006" d:name="LibreOffice 3.3" value="3.3"/>
+    <dependencies xmlns:lo="http://libreoffice.org/extensions/description/2011">
+        <lo:LibreOffice-minimal-version name="LibreOffice 4.2" value="4.2"/>
     </dependencies>
     <publisher>
         <name xlink:href="http://skyfromme.wordpress.com/2013/04/01/libreoffice-prints-on-tuesdays-only">Bjoern Michaelsen</name>
