@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:package="org.openoffice.Office" oor:name="Accelerators">
+    <!--
+        see http://opengrok.libreoffice.org/xref/core/framework/source/accelerators/acceleratorconfiguration.cxx
+            https://www.openoffice.org/marketing/ooocon2006/presentations/tuesday_d2.pdf
+            https://wiki.openoffice.org/wiki/Documentation/How_Tos/Edit_Keyboard_Configuration_File
+    -->
+    <node oor:name="PrimaryKeys">
+        <node oor:name="Modules">
+            <node oor:name="com.sun.star.text.TextDocument">
+                <!-- here we define our hot key changes for Writer (TextDocument) -->
+                <node oor:name="G_SHIFT_MOD1" oor:op="replace">
+                    <!-- Ctrl-Shift-G should fire the org.libreoffice.bundesgit.BundesGit service with argument insertlaw -->
+                    <prop oor:name="Command">
+                        <value xml:lang="en-US">service:org.libreoffice.bundesgit.BundesGit?insertlaw</value>
+                    </prop> 
+                </node>
+            </node>
+        </node>
+    </node>
+</oor:component-data>

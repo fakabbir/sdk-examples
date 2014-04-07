@@ -1,0 +1,4 @@
+Integration of BundesGit into LibreOffice
+
+see http://okfnlabs.org/blog/2012/12/13/bundesgit-german-laws-on-github.html
+for more details
