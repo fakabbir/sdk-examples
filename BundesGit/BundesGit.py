@@ -246,16 +246,7 @@ class BundesGit(unohelper.Base, XJobExecutor, XEventListener):
         self.workdir = None
     def __find_workdir(self):
         '''Find the place where the extension has been installed to'''
-        if self.workdir:
-            return self.workdir
-        # see http://api.libreoffice.org/docs/idl/ref/singletoncom_1_1sun_1_1star_1_1util_1_1theMacroExpander.html
-        expander = self.context.getValueByName( '/singletons/com.sun.star.util.theMacroExpander' )
-        url = expander.expandMacros('vnd.sun.star.expand:$UNO_USER_PACKAGES_CACHE')
-        pkgsdir = url[len('vnd.sun.star.expand:file://'):]
-        for (path, dirs, files) in os.walk(pkgsdir):
-            if 'bundesgit.oxt' in dirs:
-                self.workdir = os.path.join(pkgsdir, path, 'bundesgit.oxt')
-                return self.workdir
+        return os.path.dirname(str(__file__, encoding='utf8'))
     def __get_repopath(self):
         return os.path.join(self.__find_workdir(), 'bundesgitrepo')
     def __get_indexpath(self):
