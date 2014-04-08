@@ -110,6 +110,14 @@ class CommitIndex:
 
 # tests below this point
 
+# to run these:
+# - go to Tools->Marcos->Organize Macros->LibreOffice Basic
+# - press Edit
+# - add this line to the source in the "Main" function
+#   createUnoService("org.libreoffice.bundesgit.BundesGit").trigger("selftest")
+# - press F5
+# check output on stdout/stderr of the console you started LibreOffice from
+
 class TestParagraphScanner(unittest.TestCase):
     def test_default_roundtrip(self):
         scanner = ParagraphScanner()
@@ -165,9 +173,6 @@ class TestGitWrapper(unittest.TestCase):
         gitwrapper.update()
         filenames = gitwrapper.get_filenames('master')
         self.assertIn('thirdfile', filenames)
-
-if __name__ == '__main__':
-    unittest.main()
 
 # UNO plumbing here
 
@@ -240,6 +245,13 @@ class BundesGit(unohelper.Base, XJobExecutor, XEventListener):
             else:
                 # otherwise, just move to the end of the paragraph
                 cursor.collapseToEnd()
+        elif args == 'selftest':
+            loader = unittest.TestLoader()
+            suite = unittest.TestSuite()
+            for testcase in [TestParagraphScanner, TestGitWrapper]:
+                tests = loader.loadTestsFromTestCase(testcase)
+                suite.addTest(tests)
+            unittest.TextTestRunner().run(suite)
     # boilerplate code below this point
     def __init__(self, context):
         self.context = context
