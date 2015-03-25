@@ -1,0 +1,7 @@
+[gerrit]
+host=logerrit
+port=29418
+project=sdk-examples
+defaultremote=logerrit
+defaultbranch=master
+
