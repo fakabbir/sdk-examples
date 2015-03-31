@@ -7,28 +7,28 @@ from com.sun.star.beans import PropertyValue
 from com.sun.star.connection import NoConnectException
 
 
-OPENOFFICE_PORT = 2002
-_oopaths=(
+LIBREOFFICE_PORT = 2002
+_libreoffice_paths=(
     ('/usr/lib/libreoffice/program/', '/usr/lib/libreoffice/program/'),
     ('/usr/lib64/libreoffice/program/', '/usr/lib64/libreoffice/program/'),
 )
 
-for p in _oopaths:
+for p in _libreoffice_paths:
     if os.path.exists(p[0]):
-        OPENOFFICE_PATH    = p[0]
-        OPENOFFICE_BIN     = os.path.join(OPENOFFICE_PATH, 'soffice')
-        OPENOFFICE_LIBPATH = p[1]
+        LIBREOFFICE_PATH    = p[0]
+        LIBREOFFICE_BIN     = os.path.join(LIBREOFFICE_PATH, 'soffice')
+        LIBREOFFICE_LIBPATH = p[1]
 
         # Add to path so we can find uno.
-        if sys.path.count(OPENOFFICE_LIBPATH) == 0:
-            sys.path.insert(0, OPENOFFICE_LIBPATH)
+        if sys.path.count(LIBREOFFICE_LIBPATH) == 0:
+            sys.path.insert(0, LIBREOFFICE_LIBPATH)
         break
 
 class OORunner:
     """
     Start, stop, and connect to OpenOffice.
     """
-    def __init__(self, port=OPENOFFICE_PORT):
+    def __init__(self, port=LIBREOFFICE_PORT):
         """ Create OORunner that connects on the specified port. """
         self.port = port
 
@@ -83,7 +83,7 @@ class OORunner:
         """
         Start a headless instance of OpenOffice.
         """
-        args = [OPENOFFICE_BIN,
+        args = [LIBREOFFICE_BIN,
                 '--headless',
                 '--accept=socket,host=localhost,port=%d;urp;StarOffice.ServiceManager;tcpNoDelay=1;' % self.port,
                 '--nologo',
@@ -92,8 +92,8 @@ class OORunner:
                 '--nocrashreport',
                 '--norestore'
                 ]
-        env  = {'PATH'       : '/bin:/usr/bin:%s' % OPENOFFICE_PATH,
-                'PYTHONPATH' : OPENOFFICE_LIBPATH,
+        env  = {'PATH'       : '/bin:/usr/bin:%s' % LIBREOFFICE_PATH,
+                'PYTHONPATH' : LIBREOFFICE_LIBPATH,
                 }
 
         try:
@@ -145,7 +145,7 @@ atexit.register(_shutdown_desktops)
 atexit.register(_shutdown_graphicproviders)
 
 
-def oo_shutdown_if_running(port=OPENOFFICE_PORT):
+def oo_shutdown_if_running(port=LIBREOFFICE_PORT):
     """ Shutdown OpenOffice if it's running on the specified port. """
     oorunner = OORunner(port)
     try:
