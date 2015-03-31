@@ -26,7 +26,7 @@ for p in _libreoffice_paths:
 
 class LibreOfficeRunner:
     """
-    Start, stop, and connect to OpenOffice.
+    Start, stop, and connect to LibreOffice.
     """
     def __init__(self, port=LIBREOFFICE_PORT):
         """ Create LibreOfficeRunner that connects on the specified port. """
@@ -34,8 +34,8 @@ class LibreOfficeRunner:
 
     def connect(self, no_startup=False):
         """
-        Connect to OpenOffice.
-        If a connection cannot be established try to start OpenOffice.
+        Connect to LibreOffice.
+        If a connection cannot be established try to start LibreOffice.
         """
         localContext = uno.getComponentContext()
         servicemanager = localContext.ServiceManager
@@ -51,7 +51,7 @@ class LibreOfficeRunner:
             except NoConnectException:
                 pass
 
-            # If first connect failed then try starting OpenOffice.
+            # If first connect failed then try starting LibreOffice.
             if n == 0:
                 # Exit loop if startup not desired.
                 if no_startup:
@@ -64,14 +64,14 @@ class LibreOfficeRunner:
             n += 1
 
         if not context:
-            raise Exception("Failed to connect to OpenOffice on port %d" % self.port)
+            raise Exception("Failed to connect to LibreOffice on port %d" % self.port)
 
         desktop = context.ServiceManager.createInstanceWithContext("com.sun.star.frame.Desktop", context)
         # generate a graphic provider as well to embed images from filesystem
         graphicprovider = context.ServiceManager.createInstance('com.sun.star.graphic.GraphicProvider')
 
         if not (desktop and graphicprovider):
-            raise Exception("Failed to create OpenOffice desktop or graphicprovider on port %d" % self.port)
+            raise Exception("Failed to create LibreOffice desktop or graphicprovider on port %d" % self.port)
 
         if did_start:
             _started_desktops[self.port] = desktop
@@ -81,7 +81,7 @@ class LibreOfficeRunner:
 
     def startup(self):
         """
-        Start a headless instance of OpenOffice.
+        Start a headless instance of LibreOffice.
         """
         args = [LIBREOFFICE_BIN,
                 '--headless',
@@ -99,14 +99,14 @@ class LibreOfficeRunner:
         try:
             pid = os.spawnve(os.P_NOWAIT, args[0], args, env)
         except Exception as e:
-            raiseException("Failed to start OpenOffice on port %d: %s" % (self.port, e.message))
+            raiseException("Failed to start LibreOffice on port %d: %s" % (self.port, e.message))
 
         if pid <= 0:
-            raise Exception("Failed to start OpenOffice on port %d" % self.port)
+            raise Exception("Failed to start LibreOffice on port %d" % self.port)
 
     def shutdown(self):
         """
-        Shutdown OpenOffice.
+        Shutdown LibreOffice.
         """
         try:
             if _started_desktops.get(self.port):
@@ -123,7 +123,7 @@ _started_desktops = {}
 _started_graphicproviders = {}
 
 def _shutdown_desktops():
-    """ Shutdown all OpenOffice desktops that were started by the program. """
+    """ Shutdown all LibreOffice desktops that were started by the program. """
     for port, desktop in _started_desktops.items():
         try:
             if desktop:
@@ -132,7 +132,7 @@ def _shutdown_desktops():
             pass
 
 def _shutdown_graphicproviders():
-    """ Shutdown all OpenOffice graphicproviders that were started by the program. """
+    """ Shutdown all LibreOffice graphicproviders that were started by the program. """
     for port, graphicprovider in _started_graphicproviders.items():
         try:
             if graphicprovider:
@@ -146,7 +146,7 @@ atexit.register(_shutdown_graphicproviders)
 
 
 def oo_shutdown_if_running(port=LIBREOFFICE_PORT):
-    """ Shutdown OpenOffice if it's running on the specified port. """
+    """ Shutdown LibreOffice if it's running on the specified port. """
     oorunner = LibreOfficeRunner(port)
     try:
         desktop, graphicprovider = oorunner.connect(no_startup=True)
@@ -158,7 +158,7 @@ def oo_shutdown_if_running(port=LIBREOFFICE_PORT):
 
 def oo_properties(**args):
     """
-    Convert args to OpenOffice property values.
+    Convert args to LibreOffice property values.
     """
     props = []
     for key in args:
