@@ -24,12 +24,12 @@ for p in _libreoffice_paths:
             sys.path.insert(0, LIBREOFFICE_LIBPATH)
         break
 
-class OORunner:
+class LibreOfficeRunner:
     """
     Start, stop, and connect to OpenOffice.
     """
     def __init__(self, port=LIBREOFFICE_PORT):
-        """ Create OORunner that connects on the specified port. """
+        """ Create LibreOfficeRunner that connects on the specified port. """
         self.port = port
 
     def connect(self, no_startup=False):
@@ -147,7 +147,7 @@ atexit.register(_shutdown_graphicproviders)
 
 def oo_shutdown_if_running(port=LIBREOFFICE_PORT):
     """ Shutdown OpenOffice if it's running on the specified port. """
-    oorunner = OORunner(port)
+    oorunner = LibreOfficeRunner(port)
     try:
         desktop, graphicprovider = oorunner.connect(no_startup=True)
         desktop.terminate()

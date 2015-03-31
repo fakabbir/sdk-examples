@@ -1,10 +1,10 @@
 import unohelper
 
-from runner import OORunner
+from runner import LibreOfficeRunner
 
 class CalcExamples(object):
     def run(self):
-        oor = OORunner()
+        oor = LibreOfficeRunner()
         self.desktop, self.graphicprovider = oor.connect()
         url = unohelper.systemPathToFileUrl('/tmp/test.ods')
         self.document = self.desktop.loadComponentFromURL(url, "_blank", 0, ())

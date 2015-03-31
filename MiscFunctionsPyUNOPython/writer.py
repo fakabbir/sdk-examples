@@ -16,12 +16,12 @@ from com.sun.star.awt import Size
 from com.sun.star.text.ControlCharacter import PARAGRAPH_BREAK, LINE_BREAK
 from com.sun.star.awt.FontWeight import BOLD as FW_BOLD
 
-from runner import OORunner
+from runner import LibreOfficeRunner
 
 
 class WriterExamples(object):
     def run(self):
-        oor = OORunner()
+        oor = LibreOfficeRunner()
         self.desktop, self.graphicprovider = oor.connect()
         url = unohelper.systemPathToFileUrl('/tmp/test.odt')
         self.dpi = 150
